@@ -1,0 +1,130 @@
+@import 'leaflet/dist/leaflet.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Tactile film grain overlay */
+.archival-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grainFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grainFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Architectural hairline grid */
+.hairline-grid {
+  background-image: linear-gradient(to right, rgba(20, 24, 22, 0.06) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(20, 24, 22, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.dark .hairline-grid {
+  background-image: linear-gradient(to right, rgba(242, 239, 233, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(242, 239, 233, 0.04) 1px, transparent 1px);
+}
+
+/* Museum specimen index stamp */
+.specimen-stamp {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+  padding: 2px 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Editorial Monograph Dropcap */
+.editorial-dropcap::first-letter {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 3.5rem;
+  line-height: 0.85;
+  float: left;
+  margin-right: 0.65rem;
+  margin-top: 0.1rem;
+  font-weight: 700;
+  color: #D4A359;
+}
+
+/* Museum Plaque Dotted Leaders */
+.dotted-leader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.dotted-leader-fill {
+  flex-grow: 1;
+  border-bottom: 1px dotted rgba(148, 158, 153, 0.4);
+  margin: 0 0.5rem;
+  height: 0.75em;
+}
+
+/* Custom scrollbars for specimen inspector */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* ========================================================================= */
+/* ARCHIVAL MONOGRAPH PRINT ISOLATION RULES                                   */
+/* ========================================================================= */
+@media print {
+  html, body, #root {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    background: #F5F2EB !important;
+    color: #141816 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Suppress all standard UI chrome */
+  header, nav, footer, button, .no-print, [role="banner"], [role="navigation"] {
+    display: none !important;
+  }
+
+  /* Isolate the Archival Monograph Broadsheet */
+  #archival-monograph-print-root {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #F5F2EB !important;
+    color: #141816 !important;
+    border: none !important;
+    box-shadow: none !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+}

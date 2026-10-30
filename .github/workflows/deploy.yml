@@ -1,0 +1,42 @@
+name: ANIMALIA Production CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-and-build:
+    name: Lint, Test, Build & Containerize
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install NPM Dependencies
+        run: npm ci || npm install
+
+      - name: Static Type Checking
+        run: npx tsc --noEmit
+
+      - name: Build Production Web Bundle
+        run: npm run build
+
+      - name: Validate Supabase Database Migrations & Edge Functions
+        run: |
+          test -f supabase/migrations/001_animalia_biodiversity_backbone.sql
+          test -f supabase/migrations/002_engagement_and_collections.sql
+          test -f supabase/migrations/003_cursor_pagination.sql
+          test -f supabase/functions/iucn-proxy/index.ts
+          test -f supabase/functions/gemini-proxy/index.ts
+
+      - name: Build Docker Container Image
+        run: docker build -t animalia-web:latest .

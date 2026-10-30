@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="192" height="192">
+  <defs>
+    <radialGradient id="obsidianGrad192" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#141E1A"/>
+      <stop offset="100%" stop-color="#070A09"/>
+    </radialGradient>
+    <linearGradient id="brassGrad192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3D89F"/>
+      <stop offset="45%" stop-color="#D4A359"/>
+      <stop offset="100%" stop-color="#8B6220"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#obsidianGrad192)"/>
+  <rect width="480" height="480" x="16" y="16" rx="96" fill="none" stroke="url(#brassGrad192)" stroke-width="6" stroke-opacity="0.4"/>
+  <circle cx="256" cy="256" r="168" fill="none" stroke="url(#brassGrad192)" stroke-width="3" stroke-opacity="0.3"/>
+  <g id="crest">
+    <path d="M 206 142 L 226 172 L 256 132 L 286 172 L 306 142 L 298 192 L 214 192 Z" fill="url(#brassGrad192)"/>
+    <path d="M 256 195 C 215 195 185 225 185 268 C 185 298 200 326 226 348 L 242 366 L 256 376 L 270 366 L 286 348 C 312 326 327 298 327 268 C 327 225 297 195 256 195 Z" fill="none" stroke="url(#brassGrad192)" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M 226 256 L 244 262" stroke="url(#brassGrad192)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 286 256 L 268 262" stroke="url(#brassGrad192)" stroke-width="6" stroke-linecap="round"/>
+    <polygon points="256,288 246,276 266,276" fill="url(#brassGrad192)"/>
+    <path d="M 256 288 L 256 312 M 256 312 C 248 316 238 316 232 310 M 256 312 C 264 316 274 316 280 310" stroke="url(#brassGrad192)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M 152 390 C 180 422 220 436 256 436 C 292 436 332 422 360 390" fill="none" stroke="url(#brassGrad192)" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+  </g>
+  <text x="256" y="482" text-anchor="middle" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-size="34" font-weight="700" letter-spacing="8" fill="url(#brassGrad192)">ANIMALIA</text>
+</svg>
